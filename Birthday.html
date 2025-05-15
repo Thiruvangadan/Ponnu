@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Doctor Console - Birthday Scan</title>
+  <style>
+    body {
+      background-color: #101820;
+      color: #00ffcc;
+      font-family: 'Courier New', Courier, monospace;
+      padding: 30px;
+      font-size: 1.1rem;
+    }
+    #console {
+      white-space: pre-wrap;
+    }
+    .cursor {
+      display: inline-block;
+      width: 8px;
+      background-color: #00ffcc;
+      animation: blink 1s steps(2, start) infinite;
+      margin-left: 2px;
+    }
+    @keyframes blink {
+      to { visibility: hidden; }
+    }
+  </style>
+</head>
+<body>
+  <div id="console"></div><span class="cursor"></span>
+
+  <script>
+    const message = `# Scanning System... 💉
+
+> Name: Dr. Future 👩‍⚕️ (In Progress)
+> Status: Brilliant, hardworking, kind-hearted
+> Stress Level: 87% ⚠️
+> Remedy: Cake, hugs, and a reminder of how amazing she is 🎂💖
+
+> Diagnosis: Birthday Detected 🎉
+> Prescription: 
+   - 1 dose of laughter
+   - 2 spoons of joy
+   - 0 assignments today
+   - Unlimited chill 🎈
+
+> Final Note:
+Keep going, future doc. The world needs you — but today, take a breath.
+You’ve earned it. 🌸
+
+# Happy Birthday! ❤️
+
+From your annoying techie friend who’s low-key proud of you 😄`;
+
+    const consoleDiv = document.getElementById('console');
+    let i = 0;
+
+    function typeText() {
+      if (i < message.length) {
+        consoleDiv.innerHTML += message.charAt(i);
+        i++;
+        setTimeout(typeText, 35);
+      }
+    }
+
+    window.onload = typeText;
+  </script>
+</body>
+</html>
