@@ -2,22 +2,75 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Doctor Console - Birthday Scan</title>
+  <title>Ponnu_Heheheh</title>
   <style>
     body {
+      background-color: #000;
+      color: #0ff;
+      font-family: 'Courier New', Courier, monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+    }
+    #ufo-screen {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+    }
+    #ufo {
+      font-size: 4rem;
+      animation: float 2s infinite;
+      cursor: pointer;
+    }
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+    #beam {
+      width: 100px;
+      height: 200px;
+      background: linear-gradient(to bottom, rgba(0, 255, 255, 0.4), rgba(0, 255, 255, 0));
+      border-radius: 50%;
+      position: absolute;
+      top: 80px;
+      z-index: -1;
+      animation: beamExpand 2s infinite;
+    }
+    @keyframes beamExpand {
+      0% {
+        transform: scaleY(0.5);
+        opacity: 0.5;
+      }
+      100% {
+        transform: scaleY(1);
+        opacity: 1;
+      }
+    }
+    #console-screen {
       background-color: #101820;
-      color: #00ffcc;
+      color: #ff79c6;
       font-family: 'Courier New', Courier, monospace;
       padding: 30px;
-      font-size: 1.1rem;
-    }
-    #console {
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
       white-space: pre-wrap;
+      font-size: 1.1rem;
+      text-align: center;
+      display: none;
     }
     .cursor {
       display: inline-block;
       width: 8px;
-      background-color: #00ffcc;
+      background-color: #ff79c6;
       animation: blink 1s steps(2, start) infinite;
       margin-left: 2px;
     }
@@ -27,31 +80,38 @@
   </style>
 </head>
 <body>
-  <div id="console"></div><span class="cursor"></span>
+  <div id="ufo-screen">
+    <div id="ufo">🛸</div>
+    <p>Click the UFO to get abducted by birthday vibes!</p>
+    <div id="beam"></div>
+  </div>
+
+  <div id="console-screen">
+    <div id="console"></div><span class="cursor"></span>
+  </div>
 
   <script>
-    const message = `# Scanning System... 💉
+    const message = `👽 Alien Transmission Incoming... 👾
 
-> Name: Dr. Future 👩‍⚕️ (In Progress)
-> Status: Brilliant, hardworking, kind-hearted
-> Stress Level: 87% ⚠️
-> Remedy: Cake, hugs, and a reminder of how amazing she is 🎂💖
+> Subject: [Earthling Birthday Identified]
+> Target: The Most Amazing Human Ever 🌍
+> Mission Status: Successful 🎉
 
-> Diagnosis: Birthday Detected 🎉
-> Prescription: 
-   - 1 dose of laughter
-   - 2 spoons of joy
-   - 0 assignments today
-   - Unlimited chill 🎈
+> Gift Scanned: 🎁 Beam of unlimited laughter
+> Cake Scan: 🍰 Calorie overload detected
+> Recommendation:
+   - 3 servings of giggles
+   - 1 spoonful of mischief
+   - Endless fun with your favorite people 🎈
 
-> Final Note:
-Keep going, future doc. The world needs you — but today, take a breath.
-You’ve earned it. 🌸
+> Galactic Note:
+Dear Human, you’re out of this world! 🚀 
+Celebrate like it’s your last day on Earth (just kidding).
 
-# Happy Birthday! ❤️
+👾 Happy Birthday PONUU!! From your intergalactic CHALI friend 👽`;
 
-From your annoying techie friend who’s low-key proud of you 😄`;
-
+    const ufoScreen = document.getElementById('ufo-screen');
+    const consoleScreen = document.getElementById('console-screen');
     const consoleDiv = document.getElementById('console');
     let i = 0;
 
@@ -63,7 +123,11 @@ From your annoying techie friend who’s low-key proud of you 😄`;
       }
     }
 
-    window.onload = typeText;
+    document.getElementById('ufo').addEventListener('click', () => {
+      ufoScreen.style.display = 'none'; // Hide the UFO screen
+      consoleScreen.style.display = 'block'; // Show the console screen
+      typeText(); // Start typing the message
+    });
   </script>
 </body>
 </html>
